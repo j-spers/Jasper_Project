@@ -8,7 +8,22 @@ It was made by retraining ResNet-18 with a facial emotion recognition Image data
 
 ## Running This Project
 1. Download the dataset via. cURL:
-   
-   `#!/bin/bash
+      `#!/bin/bash
 curl -L -o ~/Downloads/emotion-recognition-dataset.zip\
   https://www.kaggle.com/api/v1/datasets/download/sujaykapadnis/emotion-recognition-dataset`
+2. Split the images into test, train, and val folders with split_dataset.py:
+   `python3 split_dataset.py`
+3. Run the Docker container:
+`cd ~/jetson-inference/
+./docker/run.sh`
+4. Navigate into your classification folder:
+`cd python/training/classification`
+5. Save the current model paths:
+`NET=models/testdataset
+DATASET=data/testdataset`
+6. Load your model and test it with an image:
+`imagenet.py \
+  --model=$NET/resnet18.onnx \
+  --labels=$DATASET/labels.txt \
+  --input_blob=input_0 \
+  --output_blob=output_0 \`
