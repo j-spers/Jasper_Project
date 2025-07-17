@@ -36,3 +36,8 @@ DATASET=data/testdataset`
         --labels=$DATASET/labels.txt \
         --input_blob=input_0 \
         --output_blob=output_0 \`
+
+## Visual Guide
+https://youtu.be/UL_-91YP0WI
+
+
